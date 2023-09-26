@@ -29,7 +29,7 @@ class MyApp extends StatelessWidget {
         seedColor: Colors.indigoAccent,
       ),
            useMaterial3: true),
-      home:  HomeScreen(),
+      home: const HomeScreen(),
       themeMode: ThemeMode.dark,
       darkTheme: ThemeData.dark(useMaterial3: true,),
     );

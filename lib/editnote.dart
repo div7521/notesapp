@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:isar/isar.dart';
 import 'package:notesapp/entities/savenote.dart';
-import 'package:notesapp/homescreen.dart';
+
 
 class EditNote extends StatefulWidget {
   const EditNote({Key? key, required this.title, required this.body,required this.id}) : super(key: key);
@@ -78,4 +78,5 @@ updateNote(String title,String content,int id) {
   isar?.writeTxnSync(() {
     isar.saveNotes.putSync(note);
   });}
+
 }

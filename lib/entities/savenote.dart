@@ -1,6 +1,5 @@
-import 'package:flutter/material.dart';
-import 'package:isar/isar.dart';
 
+import 'package:isar/isar.dart';
 part 'savenote.g.dart';
 
 @collection
