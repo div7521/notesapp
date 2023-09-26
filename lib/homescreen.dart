@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'dart:math';
 import 'package:notesapp/appstyle.dart';
 import 'package:notesapp/createnote.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -76,48 +77,53 @@ class _HomeScreenState extends State<HomeScreen> {
                         '${timestamp.day}/${timestamp.month}/${timestamp.day}  ${timestamp.hour}:${timestamp.minute}:${timestamp.second}';
 
                     return GestureDetector(
-                      onTap: (){
+                      onTap: () {
                         Navigator.of(context)
-                            .push(MaterialPageRoute(builder: (context) =>  EditNote(title: noteslist[index].title, body: noteslist[index].content,id: noteslist[index].id)))
+                            .push(MaterialPageRoute(
+                                builder: (context) => EditNote(
+                                    title: noteslist[index].title,
+                                    body: noteslist[index].content,
+                                    id: noteslist[index].id)))
                             .then((value) => setState(() {}));
                       },
                       child: Card(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(noteslist[index].title),
-                            Text(noteslist[index].content),
-                            Text(then),
-                          ],
+                        color: Appstyle.cardsColor[Random().nextInt(8)],
+                        child: Padding(
+                          padding: const EdgeInsets.all(10.0),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(noteslist[index].title),
+                                    const SizedBox(height: 6),
+                                    Text(noteslist[index].content,
+                                        overflow: TextOverflow.ellipsis),
+                                    const SizedBox(height: 6),
+                                    Text(then,
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.normal,
+                                            fontStyle: FontStyle.italic,
+                                            color:
+                                                Colors.white.withOpacity(0.5)))
+                                  ]),
+                              const Spacer(),
+                              IconButton(
+                                  iconSize: 60,
+                                  icon: const Icon(Icons.delete),
+                                  onPressed: () {
+                                    deleteNote(noteslist[index].id);
+                                    setState(() {});
+                                  })
+                            ],
+                          ),
                         ),
                       ),
                     );
                   }),
             ),
 
-            // ListView.builder(
-            //   itemCount:,
-            //   itemBuilder:(context, index){
-            //     return Card(
-            //       child: Padding(
-            //         padding:const EdgeInsets.all(10),
-            //         child:Column(
-            //           crossAxisAlignment: CrossAxisAlignment.start,
-            //           children:[
-            //             Text("titleController.text"),
-            //
-            //
-            //
-            //
-            //             )
-            //           ]
-            //         )
-            //       )
-            //     )
-            //   }
-            //
-            //
-            // )
           ],
         ),
       ),
