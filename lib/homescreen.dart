@@ -7,7 +7,7 @@ import 'package:notesapp/createnote.dart';
 import 'package:notesapp/editnote.dart';
 
 import 'entities/savenote.dart';
-import 'dart:ui';
+
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
